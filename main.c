@@ -1,23 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int plus(int a, int b) { return a + b; }
-int minus(int a, int b) { return a - b; }
-int multiply(int a, int b) { return a * b; }
+int plus(int a,int b) 
+{ return a + b; }
+int minus(int a,int b) 
+{ return a - b;}
+int multiply(int a, int b)
+ { return a * b; }
 int divided(int a, int b) { return a / b; }
 int main()
 {
-	int a, c;
+	int a, c, function;
 	char b;
 	printf("key a Function \nEX: 1 + 1\n");
 	scanf("%i %c %i", &a, &b, &c);
-	//IF ELSE IF
+	int (*funcptr[4])(int, int)={plus, minus, multiply, divided};
 	if (b == '+')
-		printf("%d %c %d = %d\n", a, b, c, plus(a, c));
+		function=0;
 	else if (b == '-')
-		printf("%d %c %d = %d\n", a, b, c, minus(a, c));
+		function=1;
 	else if (b == '*')
-		printf("%d %c %d = %d\n", a, b, c, multiply(a, c));
+		function=2;
 	else if (b == '/')
-		printf("%d %c %d = %d\n", a, b, c, divided(a, c));
+		function=3;
+	printf("%d %c %d = %d\n", a, b, c,funcptr[function](a,c));
 }
